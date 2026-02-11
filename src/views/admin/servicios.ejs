@@ -1,0 +1,93 @@
+<%- include("../partials/head") %>
+
+  <body class="bg-white min-h-screen flex flex-col">
+    <%- include("../partials/header") %>
+      <section class="flex-1 flex items-center justify-center py-12 px-4">
+        <div
+          class="w-full max-w-5xl rounded-2xl py-12 px-8 md:px-16 mx-auto shadow-2xl border border-gray-200 bg-white">
+
+          <!-- Título principal -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900">Editar Panel Servicios</h2>
+            <p class="text-gray-500 mt-2">Seleccione qué desea editar</p>
+          </div>
+
+          <!-- Lista de servicios -->
+          <div class="space-y-4">
+
+            <!-- Ejemplo de un servicio -->
+            <% servicios.forEach(servicio=> { %>
+
+              <div id="<%= servicio.id %>"
+                class="flex items-center justify-between p-5 bg-gray-50 border border-gray-200 rounded-xl hover:bg-white hover:shadow-lg transition">
+
+                <!-- Datos del servicio -->
+                <div>
+                  <h4 class="text-xl font-semibold text-gray-900">
+                    <%= servicio.name %>
+                  </h4>
+                  <p class="text-gray-600 text-sm">
+                    <%= `Duración: ${servicio.duration} minutos • Precio: $${servicio.price}` %>
+                  </p>
+                </div>
+
+                <!-- Acciones -->
+                <div class="flex gap-3">
+
+                  <!-- BOTÓN EDITAR -->
+                  <form action="/admin/servicios/edit/<%= servicio.id %>" method="GET">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow transition">
+                      Editar
+                    </button>
+                  </form>
+
+                  <!-- BOTÓN ELIMINAR -->
+                  <form action="/admin/servicios/delete/<%= servicio.id %>" method="POST"
+                    onsubmit="return confirm('¿Seguro que deseas eliminar este servicio?');">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold text-sm shadow transition">
+                      Eliminar
+                    </button>
+                  </form>
+
+                </div>
+
+              </div>
+
+              <% }); %>
+
+                <!-- Línea para añadir servicio -->
+                <form action="/admin/servicios/edit/new" method="GET">
+                  <button
+                    class="w-full flex items-center justify-center gap-3 p-5 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition font-semibold">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+
+                    Añadir nuevo servicio
+                  </button>
+                </form>
+
+          </div>
+
+          <!-- Botón Finalizar -->
+          <div class="pt-10 flex justify-end">
+            <button id="next"
+              class="px-8 py-3 rounded-xl text-white bg-gray-400 text-lg font-semibold disabled:opacity-70 shadow hover:bg-gray-500 transition"
+              type="submit" disabled>
+              Finalizar
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+
+      <%- include("../partials/footer") %>
+        <script src="/js/2_service.logic.js"></script>
+  </body>
+
+  </html>

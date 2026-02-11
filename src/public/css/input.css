@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "@iconify/tailwind4";
+
+body {
+  font-family: sans-serif;
+}
+h1 { color: #2c3e50; }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}

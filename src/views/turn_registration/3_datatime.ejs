@@ -1,0 +1,49 @@
+<%- include("../partials/head") %>
+
+    <body class="bg-white min-h-screen flex flex-col">
+
+        <%- include("../partials/header") %>
+        <section class="flex-1 flex items-center justify-center py-10 px-4">
+            <div class="w-full max-w-7xl rounded-lg py-8 px-16 mx-auto shadow-xl border border-gray-300">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-center mb-10 text-gray-800">Reserva tu cita</h2>
+                </div>
+                <form id="barber-form" action="/guardar-data" method="POST">
+                    <div class="container">
+                        <h3 class="font-bold text-xl text-emerald-600 mb-5">3. Elige la Hora</h3>
+                        <div id="step-3" class="step mt-8">
+                            <p class="mb-4 text-gray-600" id="current-selection-summary">
+                                <%= `Estilista: ${estado_actual.barbero_name}, Servicio: ${estado_actual.servicio},
+                                    Duración: ${estado_actual.servicio_time}` %>
+                            </p>
+
+                            <div id="slots-container" class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 gap-3 mb-6">
+                                <% horarios.forEach(horario=> { %>
+                                    <button type="button"
+                                        class="slot-button p-3 rounded-lg border font-medium bg-gray-100 text-gray-800 border-gray-300 hover:bg-teal-100">
+                                        <%= horario %>
+                                    </button>
+                                    <% }); %>
+                            </div>
+                            <input type="hidden" name="hora" id="selectedHora">
+                        </div>
+
+                        <!-- controles -->
+                        <div class="mt-15 flex items-center justify-end max-w-7/8 mx-auto">
+                            <div class="flex gap-3">
+                                <button id="next"
+                                    class="px-6 py-3 rounded-lg text-white bg-gray-400 text-lg font-semibold disabled:opacity-70"
+                                    type="submit" disabled>
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </section>
+            <%- include("../partials/footer") %>
+                <script src="/js/3_datatime.logic.js"></script>
+    </body>
+
+    </html>

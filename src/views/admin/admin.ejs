@@ -1,0 +1,66 @@
+<%- include("../partials/head") %>
+
+    <body class="bg-white min-h-screen flex flex-col">
+        <%- include("../partials/header") %>
+            <section class="flex-1 flex items-center justify-center py-12 px-4">
+  <div class="w-full max-w-5xl rounded-2xl py-12 px-8 md:px-16 mx-auto shadow-2xl border border-gray-200 bg-white">
+
+    <!-- Título principal -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900">Editar Panel</h2>
+      <p class="text-gray-500 mt-2">Seleccione qué desea editar</p>
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Card Barberos -->
+      <a href="http://localhost:3000/admin/barberos"
+        class="group bg-emerald-300 border border-emerald-400 rounded-2xl p-8 shadow hover:shadow-lg transition cursor-pointer">
+        <div class="flex flex-col items-center text-center">
+
+          <div class="bg-gray-100 text-3xl p-4 rounded-xl mb-4 group-hover:bg-gray-200 transition">
+            ✂️
+          </div>
+
+          <h3 class="text-2xl font-bold text-emerald-700">Barberos</h3>
+          <p class="text-gray-600 mt-2">Editar, agregar o eliminar barberos.</p>
+
+        </div>
+      </a>
+
+      <!-- Card Servicios -->
+      <a href="http://localhost:3000/admin/servicios"
+        class="group bg-emerald-300 border border-emerald-400 rounded-2xl p-8 shadow hover:shadow-lg transition cursor-pointer">
+        <div class="flex flex-col items-center text-center">
+
+          <div class="bg-gray-100 text-3xl p-4 rounded-xl mb-4 group-hover:bg-gray-200 transition">
+            💈
+          </div>
+
+          <h3 class="text-2xl font-bold text-emerald-700">Servicios</h3>
+          <p class="text-gray-600 mt-2">Modificar los servicios ofrecidos y precios.</p>
+
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Botón Finalizar -->
+    <div class="pt-10 flex justify-end">
+      <button id="next"
+        class="px-8 py-3 rounded-xl text-white bg-gray-400 text-lg font-semibold disabled:opacity-70 shadow hover:bg-gray-500 transition"
+        type="submit" disabled>
+        Finalizar
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+            <%- include("../partials/footer") %>
+                <script src="/js/2_service.logic.js"></script>
+    </body>
+
+    </html>

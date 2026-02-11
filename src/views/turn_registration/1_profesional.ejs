@@ -1,0 +1,63 @@
+<%- include("../partials/head") %>
+
+    <body class="bg-white min-h-screen flex flex-col">
+
+
+        <%- include("../partials/header") %>
+
+
+            <section class="flex-1 flex items-center justify-center py-10 px-4">
+                <div class="w-full max-w-7xl bg-white rounded-2xl shadow-xl border border-gray-300 p-6 md:p-12">
+
+
+                    <h2 class="text-4xl font-bold text-center mb-10 text-gray-800">Reserva tu cita</h2>
+
+
+                    <form id="barber-form" action="/service" method="POST" class="w-full space-y-10">
+                        <div>
+                            <h3 class="font-bold text-2xl text-emerald-600 mb-6">1. Selecciona al estilista</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <% barberos.forEach(barbero=> { %>
+                                    <div class="barber-card p-5 rounded-xl border border-gray-300 flex items-center gap-4 hover:bg-gray-100 cursor-pointer transition-all duration-200"
+                                        data-id="<%= barbero.id %>" data-name="<%= barbero.name %>">
+                                        <img src="<%= barbero.img %>" alt="<%= barbero.name %>"
+                                            class="w-20 h-20 rounded-full object-cover shadow-md" />
+                                        <div class="grow">
+                                            <h4 class="font-bold text-lg text-gray-800">
+                                                <%= barbero.name %>
+                                            </h4>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <%= barbero.specialty %>
+                                            </p>
+                                            <p class="text-xs font-semibold text-yellow-500">
+                                                <%= barbero.rating %> ⭐
+                                            </p>
+                                        </div>
+                                        <span
+                                            class="icon-[ic--sharp-check-circle] checkicon text-emerald-500 text-3xl hidden"></span>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                            <input type="hidden" name="barberId" id="selectedBarberId">
+                            <input type="hidden" name="barberName" id="selectedBarberName">
+                        </div>
+
+
+                        <div class="flex justify-end">
+                            <button id="next" type="submit" disabled
+                                class="px-6 py-3 rounded-lg text-white bg-gray-400 text-lg font-semibold disabled:opacity-70">
+                                Siguiente
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+
+            <%- include("../partials/footer") %>
+                <script src="/js/1_start.logic.js"></script>
+
+
+    </body>
+
+    </html>

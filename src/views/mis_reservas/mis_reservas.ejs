@@ -1,0 +1,146 @@
+<%- include("../partials/head") %>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <%- include("../partials/header") %>
+
+        <main class="flex-1 flex items-center w-full max-w-6xl mx-auto px-6 py-10">
+
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-10 w-full">
+
+                <h2 class="text-3xl font-semibold text-center mb-10">
+                    Turnos reservados
+                </h2>
+
+                <% if (reservas && reservas.length> 0) { %>
+
+                    <% reservas.forEach(reserva=> { %>
+
+                        <div class="w-full bg-gray-100 shadow-lg rounded-xl my-6 border border-gray-200">
+
+                            <div class="px-6 py-5">
+
+                                <div class="flex items-start">
+
+                                    <div class="flex-grow truncate">
+
+                                        <div class="w-full sm:flex justify-between items-center mb-4">
+
+                                            <h2 class="text-2xl font-bold truncate mb-2 sm:mb-0">
+                                                <%= reserva.cliente_nombre %>
+                                            </h2>
+
+                                            <div class="flex flex-wrap gap-3 text-sm text-gray-700">
+
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="icon-[uiw--date] w-4 h-4 text-green-600"></span>
+                                                    <span>
+                                                        <%= reserva.fecha %>
+                                                    </span>
+                                                </div>
+
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="icon-[streamline--watch-circle-time-remix] w-4 h-4 text-green-600"></span>
+                                                    <span>
+                                                        <%= reserva.hora %>
+                                                    </span>
+                                                </div>
+
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="icon-[tdesign--time] w-4 h-4 text-green-600"></span>
+                                                    <span>
+                                                        <%= `${reserva.duration} min` %>
+                                                    </span>
+                                                </div>
+
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="icon-[bx--dollar] w-4 h-4 text-green-600"></span>
+                                                    <span>
+                                                        <%= reserva.price %>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-end justify-between">
+
+                                            <div class="text-gray-800 space-y-1">
+                                                <p>Servicio: <span class="font-semibold">
+                                                        <%= reserva.service_name %>
+                                                    </span></p>
+                                                <p>Barbero: <span class="font-semibold">
+                                                        <%= reserva.barbero_name %>
+                                                    </span></p>
+                                            </div>
+
+                                            <form action="/mis_reservas/eliminar" method="POST"
+                                                onsubmit="return confirm('¿Estás seguro que quieres eliminar esta reserva?');">
+
+                                                <input type="hidden" name="reserva_id" value="<%= reserva.id %>">
+
+                                                <button type="submit"
+                                                    class="flex items-center justify-center text-white w-11 h-11 rounded-full bg-gradient-to-b from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 transition">
+                                                    <span
+                                                        class="icon-[material-symbols--delete-forever-rounded] w-6 h-6"></span>
+                                                </button>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <% }); %>
+
+                            <% } else { %>
+
+                                <form id="mis-reservas-form" action="/mis_reservas" method="POST" class="space-y-8 w-full max-w-xl mx-auto">
+
+                                    <div>
+                                        <h3 class="font-bold text-xl text-emerald-600 mb-4">Buscar reservas</h3>
+
+                                        <div class="relative">
+                                            <input type="email" id="email" name="email"
+                                                class="peer w-full bg-white border border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl px-4 py-3 h-12 transition outline-none placeholder-transparent"
+                                                placeholder=" " required />
+
+                                            <label for="email" class="absolute left-4 -top-3 text-sm text-gray-500 bg-white px-1 cursor-text
+                    peer-placeholder-shown:text-base peer-placeholder-shown:top-3
+                    peer-focus:-top-3 peer-focus:text-sm peer-focus:text-emerald-600 transition-all">
+                                                Email asociado a la reserva
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-end">
+                                        <button id="submit-btn" type="submit" disabled
+                                            class="px-6 py-3 rounded-xl bg-gray-400 text-white font-semibold transition disabled:opacity-70">
+                                            Buscar
+                                        </button>
+                                    </div>
+
+                                </form>
+
+                                <% } %>
+
+            </div>
+
+            <section id="results" class="mt-10 hidden w-full max-w-4xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-4">Resultados</h3>
+                <div id="results-container" class="space-y-4"></div>
+            </section>
+
+        </main>
+
+        <%- include("../partials/footer") %>
+
+            <script src="/js/mis_reservas.logic.js"></script>
+</body>
+
+</html>

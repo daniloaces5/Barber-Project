@@ -1,0 +1,36 @@
+{
+  "name": "turnos_app_3",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run dev:server\" \"npm run dev:tailwind\"",
+    "dev:server": "nodemon src/server.js",
+    "dev:tailwind": "npx @tailwindcss/cli -i ./src/public/css/input.css -o ./src/public/css/styles.css --watch",
+    "start": "cross-env NODE_ENV=production node src/server.js"
+  },
+  "dependencies": {
+    "@tailwindplus/elements": "^1.0.18",
+    "bcrypt": "^6.0.0",
+    "connect-livereload": "^0.6.1",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "flatpickr": "^4.6.13",
+    "flyonui": "^2.4.1",
+    "helmet": "^8.1.0",
+    "livereload": "^0.10.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.16.3",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.2.23",
+    "@iconify/json": "^2.2.407",
+    "@iconify/tailwind4": "^1.1.0",
+    "@tailwindcss/cli": "^4.1.17",
+    "concurrently": "^9.1.2",
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.11"
+  }
+}

@@ -1,0 +1,69 @@
+<header class="sticky top-0 z-50 w-full bg-[#00c896] border-b border-gray-100 shadow-sm">
+    <nav class="container mx-auto flex items-center justify-between p-4 lg:px-8">
+
+        <!-- LOGO -->
+        <a href="/" class="flex items-center gap-2">
+            <img src="../img/89b696ba0972e41aa0137495c38b59b9.png" class="h-10" />
+            <span class="font-extrabold text-xl uppercase text-gray-900">
+                Barber<span class="text-gray-100">Pro</span>
+            </span>
+        </a>
+
+        <!-- BOTÓN HAMBURGUESA -->
+        <button id="openMenu" class="lg:hidden rounded-lg p-2 text-gray-900 hover:bg-black/10 transition">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-7">
+                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+
+        <!-- DESKTOP MENU -->
+        <div class="hidden lg:flex gap-8">
+            <a href="/" class="font-bold uppercase">Inicio</a>
+            <a href="#" class="font-bold uppercase">Servicios</a>
+            <a href="/mis_reservas" class="font-bold uppercase">Mis Reservas</a>
+        </div>
+
+        <a href="/login" class="hidden lg:block rounded-xl bg-black px-6 py-2.5 text-sm font-bold text-white">
+            Panel Admin →
+        </a>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <dialog id="mobileMenu" class="backdrop:bg-black/40 backdrop-blur-sm lg:hidden p-0 w-full max-w-sm ml-auto
+           transition-all duration-300">
+
+        <div class="h-full bg-white p-6 shadow-2xl animate-slideIn">
+
+            <!-- HEADER -->
+            <div class="flex items-center justify-between">
+                <span class="font-extrabold uppercase text-gray-900">
+                    Barber<span class="text-emerald-500">Pro</span>
+                </span>
+
+                <button id="closeMenu" class="rounded-full p-2 text-gray-500 hover:bg-gray-100">
+                    ✕
+                </button>
+            </div>
+
+            <!-- LINKS -->
+            <nav class="mt-10 space-y-3">
+                <a href="/start" class="block rounded-xl px-5 py-4 text-lg font-semibold hover:bg-emerald-50">
+                    Inicio
+                </a>
+                <a href="/mis_reservas" class="block rounded-xl px-5 py-4 text-lg font-semibold hover:bg-emerald-50">
+                    Mis Reservas
+                </a>
+                <a href="#" class="block rounded-xl px-5 py-4 text-lg font-semibold hover:bg-emerald-50">
+                    Servicios
+                </a>
+            </nav>
+
+            <!-- CTA -->
+            <div class="mt-10 border-t pt-6">
+                <a href="/admin" class="block text-center rounded-xl bg-black px-6 py-4 font-bold text-white">
+                    Panel Admin →
+                </a>
+            </div>
+        </div>
+    </dialog>
+</header>

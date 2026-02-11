@@ -1,0 +1,77 @@
+<%- include("../partials/head") %>
+
+  <body class="bg-white min-h-screen flex flex-col">
+    <%- include("../partials/header") %>
+      <section class="flex-1 flex items-center justify-center py-12 px-4">
+        <!-- component -->
+        <div class="container px-4 mx-auto">
+          <div class="max-w-lg mx-auto">
+            <div class="text-center mb-6">
+              <h2 class="text-3xl md:text-4xl font-extrabold">Sign in</h2>
+            </div>
+            <form action="" class="max-w-md mx-auto">
+
+              <div class="relative mb-6">
+                <input type="email" id="email" name="email" required placeholder="" class="peer w-full h-12 px-4 rounded-xl border border-gray-300 bg-white
+             text-gray-900 font-semibold
+             focus:border-emerald-500 focus:ring-emerald-500
+             outline-none transition" />
+                <label for="email" class="absolute left-4 top-3 text-gray-500 bg-white px-1 cursor-text
+             transition-all
+             peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+             peer-focus:-top-3 peer-focus:text-sm peer-focus:text-emerald-600
+             peer-[:not(:placeholder-shown)]:-top-3
+             peer-[:not(:placeholder-shown)]:text-sm">
+                  Email
+                </label>
+              </div>
+
+              <div class="relative mb-6">
+                <input type="password" id="password" name="password" required placeholder="" class="peer w-full h-12 px-4 rounded-xl border border-gray-300 bg-white
+             text-gray-900 font-semibold
+             focus:border-emerald-500 focus:ring-emerald-500
+             outline-none transition" />
+                <label for="password" class="absolute left-4 top-3 text-gray-500 bg-white px-1 cursor-text
+             transition-all
+             peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+             peer-focus:-top-3 peer-focus:text-sm peer-focus:text-emerald-600
+             peer-[:not(:placeholder-shown)]:-top-3
+             peer-[:not(:placeholder-shown)]:text-sm">
+                  Password
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between mb-6 text-sm">
+                <label class="flex items-center gap-2 font-semibold text-gray-700">
+                  <input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                  Remember me
+                </label>
+
+                <a href="#" class="font-semibold text-emerald-600 hover:underline">
+                  Forgot password?
+                </a>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl font-bold text-white text-lg
+           bg-emerald-600 hover:bg-emerald-700
+           transition shadow">
+                Sign in
+              </button>
+
+              <p class="mt-6 text-center font-semibold text-gray-700">
+                Don’t have an account?
+                <a href="#" class="text-emerald-600 hover:underline">
+                  Sign up
+                </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+
+      <%- include("../partials/footer") %>
+        <script src="/js/2_service.logic.js"></script>
+  </body>
+
+  </html>

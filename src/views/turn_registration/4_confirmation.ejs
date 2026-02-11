@@ -1,0 +1,124 @@
+<%- include("../partials/head") %>
+
+<body class="bg-white min-h-screen flex flex-col">
+
+    <%- include("../partials/header") %>
+
+    <section class="flex-1 flex items-center justify-center py-10 px-4">
+        <div class="w-full max-w-7xl rounded-lg py-8 px-16 mx-auto shadow-xl border border-gray-300">
+
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-center mb-10 text-gray-800">Reserva tu cita</h2>
+            </div>
+
+            <form id="barber-form" action="/end" method="POST">
+                <div class="container">
+
+                    <h3 class="font-bold text-xl text-emerald-600 mb-5">4. Confirma tus Datos</h3>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 place-items-stretch">
+                        
+                        <!-- CARD 1 -->
+                        <div class="bg-white w-full shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+                            <div class="px-6 py-5 bg-gray-100 border-b">
+                                <h3 class="text-lg font-medium text-gray-900"></h3>
+                                <p class="mt-1 text-sm text-gray-500">Details and informations about user.</p>
+                            </div>
+
+                            <dl class="divide-y divide-gray-200 flex-1">
+                                <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-gray-50">
+                                    <dt class="text-sm font-medium text-gray-500">Estilista</dt>
+                                    <dd class="col-span-2 text-sm text-gray-900">
+                                        <%= estado_actual.barbero_name %>
+                                    </dd>
+                                </div>
+
+                                <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-white">
+                                    <dt class="text-sm font-medium text-gray-500">Servicio</dt>
+                                    <dd class="col-span-2 text-sm text-gray-900">
+                                        <%= estado_actual.servicio %>
+                                    </dd>
+                                </div>
+
+                                <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-gray-50">
+                                    <dt class="text-sm font-medium text-gray-500">Fecha</dt>
+                                    <dd class="col-span-2 text-sm text-gray-900">
+                                        <%= estado_actual.data.split("-").reverse().join("/") %>
+                                    </dd>
+                                </div>
+
+                                <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-white">
+                                    <dt class="text-sm font-medium text-gray-500">Hora</dt>
+                                    <dd class="col-span-2 text-sm text-gray-900">
+                                        <%= estado_actual.time %>
+                                    </dd>
+                                </div>
+
+                                <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-gray-50">
+                                    <dt class="text-sm font-medium text-gray-500">Duracion total</dt>
+                                    <dd class="col-span-2 text-sm text-gray-900">
+                                        <%= estado_actual.servicio_time %>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <!-- CARD 2 -->
+                        <div class="bg-white w-full shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+                            <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+                                Inserte sus datos
+                            </div>
+
+                            <div class="py-6 px-6 space-y-4 flex-1">
+                                <div>
+                                    <label class="block text-gray-700 font-bold mb-1" for="name">
+                                        Name
+                                    </label>
+                                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+                                        id="name" type="text" placeholder="Enter your name" name="name">
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-bold mb-1" for="email">
+                                        Email
+                                    </label>
+                                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+                                        id="email" type="email" placeholder="Enter your email" name="email" required>
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-bold mb-1" for="phone">
+                                        Phone Number
+                                    </label>
+                                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none"
+                                        id="phone" type="tel" placeholder="Enter your phone number" name="phone"
+                                        required pattern="^[0-9]{8,15}$">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Controles -->
+                    <div class="mt-15 flex items-center justify-end max-w-7/8 mx-auto">
+                        <div class="flex gap-3">
+                            <button id="next4"
+                                class="px-6 py-3 rounded-lg text-white bg-gray-400 text-lg font-semibold disabled:opacity-70"
+                                type="submit" disabled>
+                                Siguiente
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <%- include("../partials/footer") %>
+
+    <script src="/js/4_confirmation.logic.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<%- include("../partials/head") %>
+
+  <body class="bg-white min-h-screen flex flex-col">
+
+    <%- include("../partials/header") %>
+
+      <section class="flex-1 flex items-center justify-center py-16 px-6">
+        <div class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-gray-200 p-10 md:p-16">
+
+          <!-- Título -->
+          <div class="text-center mb-14">
+            <h2 class="text-4xl font-bold text-gray-900 tracking-tight">Editar Panel Barberos</h2>
+            <p class="text-gray-500 mt-2 text-lg">Seleccione qué desea editar</p>
+          </div>
+
+          <!-- Cards (una por línea) -->
+          <div class="space-y-4">
+
+            <% barberos.forEach(barbero=> { %>
+
+              <!-- Card estilo servicios -->
+              <div
+                class="flex items-center justify-between p-5 bg-gray-50 border border-gray-200 rounded-xl hover:bg-white hover:shadow-lg transition">
+
+                <!-- Datos del barbero -->
+                <div class="flex items-center gap-5">
+                  <img src="<%= barbero.img %>" class="w-20 h-20 rounded-full object-cover shadow"
+                    alt="<%= barbero.name %>" />
+
+                  <div>
+                    <h4 class="text-xl font-semibold text-gray-900">
+                      <%= barbero.name %>
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      <%= barbero.specialty %>
+                    </p>
+                    <p class="text-yellow-500 text-sm font-semibold">
+                      <%= barbero.rating %> ⭐
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="flex gap-3">
+
+                  <!-- Editar -->
+                  <form action="/admin/barberos/edit/<%= barbero.id %>" method="GET">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow transition">
+                      Editar
+                    </button>
+                  </form>
+
+                  <!-- Eliminar -->
+                  <form action="/admin/barberos/delete/<%= barbero.id %>" method="POST"
+                    onsubmit="return confirm('¿Eliminar este barbero?');">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold text-sm shadow transition">
+                      Eliminar
+                    </button>
+                  </form>
+
+                </div>
+              </div>
+
+              <% }) %>
+
+
+                <!-- Línea de Añadir barbero (misma estética que “Añadir servicio”) -->
+                <button onclick="window.location.href='/admin/barberos/add'"
+                  class="w-full flex items-center justify-center gap-3 p-5 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition font-semibold">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+
+                  Añadir nuevo barbero
+                </button>
+
+          </div>
+
+
+          <!-- Botón Finalizar -->
+          <div class="pt-12 flex justify-end">
+            <button id="next"
+              class="px-10 py-3 rounded-2xl text-white bg-gray-400 text-lg font-semibold disabled:opacity-60 shadow-lg hover:bg-gray-500 transition"
+              type="submit" disabled>
+              Finalizar
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <%- include("../partials/footer") %>
+        <script src="/js/2_service.logic.js"></script>
+
+  </body>
+
+  </html>
