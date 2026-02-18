@@ -8,13 +8,12 @@ import livereload from "livereload";
 import indexRoutes from "./routes/index/index.routes.js";
 import userRoutes from "./routes/user_reservas/1_start.routes.js";
 import mis_reservasRoutes from "./routes/mis_reservas/mis_reservas.routes.js";
-import { requireAdmin } from "./middlewares/require.Admin.js";
+import { requireAuth } from "./middlewares/require.Admin.js";
 import adminRoutes from "./routes/admin/admin.routes.js";
 import loginRoutes from "./routes/admin/login.routes.js";
-import bcrypt from "bcrypt"
+import registRoutes from "./routes/admin/regist.routes.js";
 import session from "express-session";
-import passport from "passport";
-import { Strategy } from "passport-local";
+import passport from "./config/passport.config.js";
 
 
 dotenv.config();
@@ -34,7 +33,7 @@ app.use(
       httpOnly: true, // JS no accede
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      maxAge: 1000 * 60 * 60, // 1 hora
+      maxAge: 1000 * 60 * 15, // 15 minutos
     },
   })
 );
@@ -79,7 +78,8 @@ app.use("/", indexRoutes);
 app.use("/", userRoutes);
 app.use("/mis_reservas", mis_reservasRoutes);
 app.use("/login", loginRoutes);
-app.use("/admin", requireAdmin, adminRoutes);
+app.use("/regist", registRoutes);
+app.use("/admin", requireAuth, adminRoutes);
 
 // ⚠️ Error 404
 app.use((req, res) => {

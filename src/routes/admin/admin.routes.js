@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireAdmin } from "../../middlewares/require.Admin.js";
+import { requireAuth } from "../../middlewares/require.Admin.js";
 import {
   paneladmin,
   panelbarberos,
@@ -19,7 +19,7 @@ import {
 const router = Router();
 
 // 🔒 todo lo que esté en /admin pasa por aquí
-router.use(requireAdmin);
+router.use(requireAuth);
 
 // /admin
 router.get("/", paneladmin);
