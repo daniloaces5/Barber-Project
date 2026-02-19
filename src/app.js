@@ -14,6 +14,8 @@ import loginRoutes from "./routes/admin/login.routes.js";
 import registRoutes from "./routes/admin/regist.routes.js";
 import session from "express-session";
 import passport from "./config/passport.config.js";
+import connectPgSimple from "connect-pg-simple";
+import { Pool } from "pg";
 
 
 dotenv.config();
@@ -26,19 +28,35 @@ const app = express();
 
 app.set("trust proxy", 1);
 
+const PgSession = connectPgSimple(session);
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
 app.use(
   session({
+    store: new PgSession({
+      pool: pool,
+      tableName: "session",
+    }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: {
+      secure: true,
+      sameSite: "none",
       httpOnly: true,
       secure: true,
       sameSite: "none",
       maxAge: 1000 * 60 * 15,
     },
   })
-)
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
