@@ -24,19 +24,21 @@ const app = express();
 // app.disable("x-powered-by");
 // Hasta aqui
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      httpOnly: true, // JS no accede
-      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      secure: true,
       sameSite: "lax",
-      maxAge: 1000 * 60 * 15, // 15 minutos
+      maxAge: 1000 * 60 * 15,
     },
   })
-);
+)
 app.use(passport.initialize());
 app.use(passport.session());
 

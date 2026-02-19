@@ -10,4 +10,5 @@ const router = Router();
 router.get("", panelLogin);
 router.post("", resLogin);
 
+
 export default router;
