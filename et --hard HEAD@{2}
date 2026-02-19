@@ -1,0 +1,9 @@
+[33m9366f5a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: rebase (finish): returning to refs/heads/main
+[33m9366f5a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{1}: rebase (continue): Correccion de problemas de login
+[33m00887fd[m HEAD@{2}: pull origin main --rebase (start): checkout 00887fde50bc78927f54f1a25eae88a6e308126e
+[33m30c3769[m HEAD@{3}: commit: Correccion de problemas de login
+[33m6348b01[m HEAD@{4}: commit: Correccion de login
+[33me78cb47[m HEAD@{5}: commit: Favicon
+[33m89cfbe2[m HEAD@{6}: commit: Añadi la autenticacion para admin
+[33m68111c2[m HEAD@{7}: Branch: renamed refs/heads/master to refs/heads/main
+[33m68111c2[m HEAD@{9}: commit (initial): Initial commit
