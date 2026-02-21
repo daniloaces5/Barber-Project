@@ -2,10 +2,10 @@
   "name": "turnos_app_3",
   "type": "module",
   "scripts": {
-    "dev": " NODE_ENV=development concurrently \"npm run dev:server\" \"npm run dev:tailwind\"",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run dev:server\" \"npm run dev:tailwind\"",
     "dev:server": "nodemon src/server.js",
     "dev:tailwind": "npx @tailwindcss/cli -i ./src/public/css/input.css -o ./src/public/css/styles.css --watch",
-    "start": "cross-env NODE_ENV=production node src/server.js"
+    "start": " NODE_ENV=production node src/server.js"
   },
   "dependencies": {
     "@tailwindplus/elements": "^1.0.18",
